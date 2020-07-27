@@ -6,9 +6,12 @@ from django.shortcuts import redirect
 
 # Create your views here.
 
+def welcome_page(request):
+    return render(request, 'blog/welcome_page.html', {})
+
 def post_list(request):
     #Publish blog posts sorted by publish date
-    posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
+    posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('-published_date')
     return render(request, 'blog/post_list.html', {'posts': posts})
 
 def post_detail(request, pk):
