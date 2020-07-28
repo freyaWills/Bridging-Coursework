@@ -82,6 +82,7 @@ h1, h2, h3, h4 {
     margin-bottom: 70px;
     margin-top: 20px;
     margin-left: 30px;
+    margin-right: 30px;
 }
 
 .post-form {
@@ -89,11 +90,15 @@ h1, h2, h3, h4 {
     padding: 20px 20px 20px 20px;
 }
 
-.post h2 a {
+.post h2 {
     color: #383838;
+    text-decoration: underline;
+    text-decoration-style: wavy;
+    text-decoration-color: darkcyan;
 }
 
-.post a {
+.post h2 {
+    color: #383838;
     background:
        linear-gradient(
          to bottom, #66CEC9 0%,
@@ -106,7 +111,7 @@ h1, h2, h3, h4 {
     transition: background-size .2s;
   }
   
-.post a:hover {
+.post h2:hover {
     background-size: 4px 50px;
     color: #ffffff;
   }
