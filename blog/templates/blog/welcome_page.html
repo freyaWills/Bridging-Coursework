@@ -2,7 +2,7 @@
 
 {% block content %}
 <div class = "image-container">
-    <img class="left-image" src="../../static/images/welcome.JPG" alt = "Sunny British Field">
+    <img class="left-image" src="../../static/images/sunnyField.JPG" alt = "Sunny British Field">
     <div class="welcome-box">
         <h2>Welcome!</h2>
         <p>This website was completed as part of bridging coursework to progress to the next year of study at the University of Birmingham. It contains both blog posts and a CV tool. The blog posts relate to my second year at University as well as explaining how the website was created using Django and tested using Test-Driven Development. The CV tool allows additional experience to be easily added to an existing CV</p>
@@ -13,21 +13,21 @@
     <div class = "btn1">
         <p>Blog Posts</p>
         <figure class = "blog-cont">
-            <a href = 'https://www.google.co.uk/'><img src = '../../static/images/button2.JPG' class="blog-btn"></a>
+            <a href = "{% url 'post_list' %}"><img src = '../../static/images/bust.JPG' class="blog-btn"></a>
         </figure>
     </div>
 
     <div class = "btn2">
         <p>CV Editor</p>
         <figure>
-            <a href = 'https://www.google.co.uk/'><img src='../../static/images/welcome2.JPG' class = "cv-edit-btn"></a>
+            <a href = 'https://www.google.co.uk/'><img src='../../static/images/primroseHill.JPG' class = "cv-edit-btn"></a>
         </figure>
     </div>
 
     <div class = "btn3">
         <p>My CV</p>
         <figure>
-            <a href = 'https://www.google.co.uk/'><img src='../../static/images/button3.JPG' class = "cv-btn"></a>
+            <a href = 'https://www.google.co.uk/'><img src='../../static/images/tree.JPG' class = "cv-btn"></a>
         </figure>
     </div>
 

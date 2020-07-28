@@ -80,6 +80,13 @@ h1, h2, h3, h4 {
 
 .post {
     margin-bottom: 70px;
+    margin-top: 20px;
+    margin-left: 30px;
+}
+
+.post-form {
+    width: 50%;
+    padding: 20px 20px 20px 20px;
 }
 
 .post h2 a {
@@ -213,3 +220,4 @@ h1, h2, h3, h4 {
     -webkit-transition: .3s ease-in-out;
     transition: .3s ease-in-out;
 }
+
