@@ -12,9 +12,10 @@ class NewVisitorTest(unittest.TestCase):
     def test_can_start_a_list_and_retrieve_it_later(self):  
         self.browser.get('http://127.0.0.1:8000')
 
-
         self.assertIn("Freya's Blog", self.browser.title)  
-        self.fail('Finish the test!')  
+        header_text = self.browser.find_element_by_tag_name('h1').text  
+        self.assertIn('Freya', header_text)
+        #self.fail('Finish the test!')  
 
 if __name__ == '__main__':  
     unittest.main(warnings='ignore') 
