@@ -1,5 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from django.utils import timezone
+from django.http import HttpResponse
 from .models import Post
 from .forms import PostForm
 from django.shortcuts import redirect
@@ -8,6 +9,11 @@ from django.shortcuts import redirect
 
 def welcome_page(request):
     return render(request, 'blog/welcome_page.html', {})
+
+def cv_edit(request):
+    return render(request, 'blog/cv_edit.html', {
+        'new_item_text': request.POST.get('item_text', ''),
+    })
 
 def post_list(request):
     #Publish blog posts sorted by publish date
@@ -44,3 +50,4 @@ def post_edit(request, pk):
     else:
         form = PostForm(instance=post)
     return render(request, 'blog/post_edit.html', {'form': form})
+
