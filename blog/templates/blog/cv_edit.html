@@ -3,7 +3,7 @@
 {% block content %}
 <h2>CV - Experience</h2>
 <form method="POST">
-    <input name="item_text" id="id_new_item" placeholder="Enter new experience"/>
+    <input name="item_text" id="id_new_item" placeholder="Enter new experience" method="POST"/>
     {% csrf_token %}
 </form>
 
