@@ -2,6 +2,7 @@ from django.shortcuts import render, get_object_or_404
 from django.utils import timezone
 from django.http import HttpResponse
 from .models import Post
+from .models import Item
 from .forms import PostForm
 from django.shortcuts import redirect
 
@@ -11,9 +12,20 @@ def welcome_page(request):
     return render(request, 'blog/welcome_page.html', {})
 
 def cv_edit(request):
-    return render(request, 'blog/cv_edit.html', {
-        'new_item_text': request.POST.get('item_text', ''),
-    })
+    if request.method == 'POST':
+        Item.objects.create(text=request.POST['item_text']) #Creating a new item
+        return redirect('/cv/edit')
+
+    items = Item.objects.all()
+    return render(request, 'blog/cv_edit.html', {'items': items})
+
+    """item = Item()
+    item.text = request.POST.get('item_text', '')
+    item.save()"""
+
+    """return render(request, 'blog/cv_edit.html', {
+        'new_item_text': new_item_text
+    })"""
 
 def post_list(request):
     #Publish blog posts sorted by publish date
