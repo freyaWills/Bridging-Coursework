@@ -21,8 +21,8 @@ class Post(models.Model):
 class Item(models.Model):
     company = models.TextField(default='')
     role = models.TextField(default='')
-    startDate = PartialDateField(blank = True, null = True)
-    endDate = PartialDateField(blank = True, null = True)
+    startDate = models.DateField(blank = True, null = True)
+    endDate = models.DateField(blank = True, null = True)
     text = models.TextField(default='')
 
     def __str__(self):
