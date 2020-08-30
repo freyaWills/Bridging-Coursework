@@ -4,6 +4,7 @@ from django.http import HttpResponse
 from .models import Post
 from .models import Item
 from .forms import PostForm
+from .forms import ItemForm
 from django.shortcuts import redirect
 
 # Create your views here.
@@ -12,20 +13,44 @@ def welcome_page(request):
     return render(request, 'blog/welcome_page.html', {})
 
 def cv_edit(request):
-    if request.method == 'POST':
+
+    if request.method == "POST":
+        form = ItemForm(request.POST)
+        if form.is_valid():
+            item = form.save(commit=False)
+            item.save()
+            return redirect('/cv/edit')
+    else:
+        form = ItemForm()
+
+    return render(request, 'blog/cv_edit.html', {'form': form})
+
+
+    """Item.objects.bulk_create(
+            [Item(text=request.POST['item_text']),
+            Item(company=request.POST['item_company']),
+            Item(role=request.POST['item_role']),
+            Item(startDate=request.POST.get('item_startDate')),
+            Item(endDate = request.POST.get('item_endDate'))]
+        )
+
         Item.objects.create(text=request.POST['item_text']) #Creating a new item
-        return redirect('/cv/edit')
+        Item.objects.create(company=request.POST['item_company'])
+        Item.objects.create(role=request.POST['item_role'])
+        Item.objects.create(startDate=request.POST.get('item_startDate'))
+        Item.objects.create(endDate = request.POST.get('item_endDate'))
 
-    items = Item.objects.all()
-    return render(request, 'blog/cv_edit.html', {'items': items})
+        return redirect('/cv/edit')"""
 
-    """item = Item()
-    item.text = request.POST.get('item_text', '')
-    item.save()"""
+    #items = Item.objects.all().order_by('-startDate')
+    #items = Item.objects.all()
+    #items = Item.objects.filter(endDate__lte=timezone.now()).order_by('-startDate')
+    
+    #return render(request, 'blog/cv_edit.html', {'items': items})
 
-    """return render(request, 'blog/cv_edit.html', {
-        'new_item_text': new_item_text
-    })"""
+def cv_view(request):
+    items = Item.objects.all().order_by('-endDate') 
+    return render(request, 'blog/cv_view.html', {'items': items})
 
 def post_list(request):
     #Publish blog posts sorted by publish date

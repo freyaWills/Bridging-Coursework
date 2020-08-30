@@ -1,0 +1,82 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+<div class = "CVinfo">
+    <h1>Curriculum Vitae - Freya Wills</h1>
+    <h5>PwC sponsored BSc Computer Science student at the University of Birmingham</h5>
+    <p> Address: Brook Cottage, Lower Hamswell, Bath, BA1 9DE </p>
+    <p> Mobile: 07477062162</p>
+    <p> Email: freya.wills@gmail.com </p>
+</div>
+
+<div class = "post">
+    <h2>Education</h2>
+    <div>
+        <h4>University of Birmingham, UK</h4>
+        <h5>BSc Computer Science</h5>
+        <p class = "date">October 2018 - June 2022</p>
+        <ul>
+            <li>Awarded a degree apprenticeship with PwC which comprises summer placements and a year in industry</li>
+            <li>Year 1 Modules Include: Artificial Intelligence; Business Organisation and Management; Data Structures & Algorithms; Introduction of Financial Analysis; Logic & Computation; Mathematical Foundations of Computer Science; Programming in Java</li>
+            <li>Year 1 Average - 70%</li>
+            <li>Year 2 Modules Include: Advanced Functional Programming; Java Game Team Project; Mathematical Modelling and Decision Making; Programming in C/C++; Security & Networks; Software Engineering</li>
+            <li>Year 2 Average - 88%</li>
+        </ul>
+    </div>
+    <br>
+    <div>
+        <h4>Royal High School GDST, UK</h4>
+        <p><b>A-Levels</b>: Computer Science (A*), English Literature (A), Mathematics (A)</p>
+        <p><b>AS-Levels</b>: Photography (A)</p>
+        <p><b>GCSEs</b>: 10 A*s including Design and Technology, Geography and Spanish</p>
+        <p><b>Awards</b>: Computer Science school prize 2018, Photography school prize 2018, Design and Technology school prize 2014, Positivity peer voted school prize 2014, Spanish school prize 2012</p>
+    </div>
+</div>
+
+
+
+<div id="id_list_table" class = "post">
+    <h2>Experience</h2>
+    {% for item in items %}
+        <h4>{{ item.company }}</h4>
+        <h5>{{ item.role }} </h5>
+        <p class = "date">{{ item.startDate }} to {{item.endDate}}</p>
+        <p>{{ item.text}}</p>
+        {% if not forloop.last %}
+            <br>
+        {% endif %}
+    {% endfor %}
+</div>
+
+<div class = "post">
+    <h2>Extra-Curricular Achievements</h2>
+    <div>
+        <h4>Computer Science Ambassador and Digital Leader</h4>
+        <p class = "date">2017-2018</p>
+        <ul>
+            <li>Team leader of a group of 6 at the GDST digital leader conference where we brainstormed an app and presented it to a group of judges</li>
+            <li>Mentor for Year 10 students struggling with their programming and a class of 20 Year 5 students during a taster Computer Science lesson</li>
+            <li>Ambassador of the subject for younger students - I wrote an article included in the annual school magazine encouraging them into the subject</li>
+        </ul>
+    </div>
+    <br>
+    <div>
+        <h4>National Citizenship Service</h4>
+        <p class = "date">2016</p>
+        <ul>
+            <li>Decided as a team on a 2-week volunteering project most valuable to our community</li>
+            <li>Planned a fundraising event to finance this work</li>
+            <li>Communicated with businesses to source discounted materials</li>
+            <li>Turned an overgrown woodland into a seating area to attract more customers to the Bath City Farm</li>
+        </ul>
+    </div>
+</div>
+
+<div class = "post">
+    <h2>Skills and Interests</h2>
+    <p><b>Languages</b>: English – native; Spanish - intermediate; Mandarin - beginner</p>
+    <p><b>IT Skills</b>: Java, Python, HTML, CSS, Django, C/C++, SQL, Scrum, Jira, git, Dialogflow, Google Cloud Platform, Microsoft Office suite, MATLAB</p>
+    <p><b>Interests</b>: Merit in ABRSM grade 5 piano, Distinction in ABRSM grade 2 music theory, Silver Duke of Edinburgh award, PADI scuba diver certification, member of University of Birmingham swim team</p>
+</div>
+
+{% endblock %}

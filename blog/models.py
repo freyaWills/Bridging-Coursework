@@ -1,6 +1,7 @@
 from django.conf import settings
 from django.db import models
 from django.utils import timezone
+from partial_date import PartialDateField
 
 
 class Post(models.Model):
@@ -18,4 +19,13 @@ class Post(models.Model):
         return self.title
 
 class Item(models.Model):
+    company = models.TextField(default='')
+    role = models.TextField(default='')
+    startDate = PartialDateField(blank = True, null = True)
+    endDate = PartialDateField(blank = True, null = True)
     text = models.TextField(default='')
+    #startDate = models.DateField(blank = True, null = True)
+    #endDate = models.DateField(blank = True, null = True)
+
+    def __str__(self):
+        return self.company
