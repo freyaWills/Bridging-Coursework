@@ -19,11 +19,11 @@ class Post(models.Model):
         return self.title
 
 class Item(models.Model):
-    company = models.TextField(default='')
-    role = models.TextField(default='')
+    company = models.TextField(default=timezone.now)
+    role = models.TextField(default=timezone.now)
     startDate = models.DateField(default=timezone.now)
     endDate = models.DateField(default=timezone.now)
-    text = models.TextField(default='')
+    text = models.TextField(default=timezone.now)
 
     def __str__(self):
         return self.company
