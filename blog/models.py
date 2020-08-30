@@ -24,8 +24,6 @@ class Item(models.Model):
     startDate = PartialDateField(blank = True, null = True)
     endDate = PartialDateField(blank = True, null = True)
     text = models.TextField(default='')
-    #startDate = models.DateField(blank = True, null = True)
-    #endDate = models.DateField(blank = True, null = True)
 
     def __str__(self):
         return self.company
