@@ -1,19 +1,30 @@
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 import time
+import datetime
 import unittest
-from blog.forms import ItemForm
+from django.test import TestCase
+from blog.models import Item
 
-"""class NewVisitorTest(unittest.TestCase):  
+class NewVisitorTest(unittest.TestCase):  
 
     def setUp(self):  
         self.browser = webdriver.Firefox()
+        #self.entry = Item.objects.create(company = "Tesco", role = "Manager", startDate = datetime.datetime(2020,5,17), endDate = datetime.datetime(2020,6,25), text = "Worked in a shop")
 
     def tearDown(self):  
         self.browser.quit()
 
+    """def create_item(self, company, role, startDate, endDate, text):
+        return Item.objects.create(company=company, role=role, startDate=startDate, endDate=endDate, text=text)"""
+
     def test_entering_data_accepted_and_saved(self):
-        form = ItemForm(data={'company': "Tesco", 'role': "Manager", 'startDate': "2022-09", 'endDate': "2022-12", 'text': "Worked in a shop"})
+        form_data = {"comapany" : "Tesco", "role" : "Manager", "startDate" : datetime.datetime(2020, 5, 17), "endDate" : datetime.datetime(2020, 6, 25), "text" : "Worked in a shop"}
+        form = Item(data=form_data)
+        self.assertTrue(form.is_valid())
+
+    """def test_entering_data_accepted_and_saved(self):
+        form = create_item(self, "Tesco", "Manager", datetime.datetime(2020, 5, 17), datetime.datetime(2020, 6, 25), "Worked in a shop")
         self.assertTrue(form.is_valid())"""
 
     """def check_for_row_in_list_table(self, row_text):
@@ -34,9 +45,6 @@ from blog.forms import ItemForm
             inputbox.get_attribute('placeholder'),
             'Enter new experience'
         )
-
-
-
 
         inputbox.send_keys('Buy peacock feathers')  
         inputbox.send_keys(Keys.ENTER)  

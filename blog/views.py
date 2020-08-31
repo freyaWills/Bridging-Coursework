@@ -25,29 +25,6 @@ def cv_edit(request):
 
     return render(request, 'blog/cv_edit.html', {'form': form})
 
-
-    """Item.objects.bulk_create(
-            [Item(text=request.POST['item_text']),
-            Item(company=request.POST['item_company']),
-            Item(role=request.POST['item_role']),
-            Item(startDate=request.POST.get('item_startDate')),
-            Item(endDate = request.POST.get('item_endDate'))]
-        )
-
-        Item.objects.create(text=request.POST['item_text']) #Creating a new item
-        Item.objects.create(company=request.POST['item_company'])
-        Item.objects.create(role=request.POST['item_role'])
-        Item.objects.create(startDate=request.POST.get('item_startDate'))
-        Item.objects.create(endDate = request.POST.get('item_endDate'))
-
-        return redirect('/cv/edit')"""
-
-    #items = Item.objects.all().order_by('-startDate')
-    #items = Item.objects.all()
-    #items = Item.objects.filter(endDate__lte=timezone.now()).order_by('-startDate')
-    
-    #return render(request, 'blog/cv_edit.html', {'items': items})
-
 def cv_view(request):
     items = Item.objects.all().order_by('-endDate') 
     return render(request, 'blog/cv_view.html', {'items': items})

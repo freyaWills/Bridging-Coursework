@@ -7,11 +7,6 @@
     <br>
     <form method="POST" class="cv-form">
         {{ form.as_p }}
-        <!--<input name="item_company" id="id_new_company" placeholder="Enter the company" />
-        <input name="item_role" id="id_new_role" placeholder="Enter your role" />
-        <input name="item_startDate" id="id_startDate" type="date" />
-        <input name="item_endDate" id="id_endDate" type="date"/>
-        <input name="item_text" id="id_new_item" placeholder="Enter new experience" />-->
         <input type="submit" value="Submit" />
         {% csrf_token %}
     </form>
